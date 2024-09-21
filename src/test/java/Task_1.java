@@ -10,6 +10,7 @@ https://code.s3.yandex.net/qa-automation-engineer/java/files/paid-track/sprint1/
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.Configuration;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,6 +40,10 @@ public class Task_1 {
         $(byId("owner-avatar")).setValue("https://code.s3.yandex.net/qa-automation-engineer/java/files/paid-track/sprint1/avatarSelenide.png");
         // сохрани новое изображение
         $(byXpath(".//form[@name='edit-avatar']/button[text()='Сохранить']")).click();
+    }
+    @After
+    public void tearDown() {
+        closeWebDriver(); // Закрытие браузера после каждого теста
     }
     // закрой браузер
 }

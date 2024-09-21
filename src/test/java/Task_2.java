@@ -13,6 +13,7 @@ https://code.s3.yandex.net/qa-automation-engineer/java/files/paid-track/sprint1/
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.Configuration;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,6 +47,10 @@ public class Task_2 {
         $(byXpath(".//form[@name='new-card']/button[text()='Сохранить']")).click();
         // удали добавленную карточку, кликнув по кнопке удаления
         $(byXpath(".//button[@class='card__delete-button card__delete-button_visible']")).click();
+    }
+    @After
+    public void tearDown() {
+        closeWebDriver(); // Закрытие браузера после каждого теста
     }
 }
 

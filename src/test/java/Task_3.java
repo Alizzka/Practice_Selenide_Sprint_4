@@ -9,6 +9,7 @@
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.Configuration;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,5 +42,9 @@ public class Task_3 {
         $(byId("owner-description")).setValue("Автор автотестов");
         // сохрани изменения
         $(byXpath(".//form[@name='edit']/button[text()='Сохранить']")).click();
+    }
+    @After
+    public void tearDown() {
+        closeWebDriver(); // Закрытие браузера после каждого теста
     }
 }
