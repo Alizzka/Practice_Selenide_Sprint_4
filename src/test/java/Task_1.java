@@ -51,12 +51,16 @@ public class Task_1 {
 /*Если подключать зависимость WebDriverManager (Селенид последеней версии будет сам подтягивать нужный драйвер):
 
 Это библиотека, которая помогает установить WebDriver.
-1.	Подключи зависимость Selenium в pom.xml (или selenide):
+Но наличие пути к скачанному вебдрайверу браузера в переменных окружения (PATH) может быть причиной ошибки.
+Вебдрайвер, который находится по этому пути, может использоваться вместо того, который управляется WebDriverManager.
+При использовании вебдрайвер менеджера лучше удалить путь к папке с вебдрайвером и переменной окружения
+1.	Подключи зависимость Selenium в pom.xml (или Selenide):
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
     <version>3.141.59</version>
 </dependency>
+
 2.	Добавь зависимость WebDriverManager:
 <dependency>
     <groupId>io.github.bonigarcia</groupId>
@@ -64,13 +68,21 @@ public class Task_1 {
     <version>4.4.3</version>
     <scope>test</scope>
 </dependency>
+И также может понадобиться:
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>1.7.32</version>
+</dependency>
+
 3.	Импортируй WebDriverManager в каждый тест:
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 4.	Проинициализируй WebDriverManager в начале каждого теста.
 Для Google Chrome это выглядит так:
 WebDriverManager.chromedriver().setup();
  Чтобы не повторять этот код каждый раз, можно создать метод для инициализации public void startUp(). Понадобится аннотация @Before — тогда инициализация выполнится перед каждым тестом:
-          java
+
          @Before
           public void startUp() {
               WebDriverManager.chromedriver().setup();

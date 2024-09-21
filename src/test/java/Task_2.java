@@ -21,10 +21,10 @@ public class Task_2 {
 
     @Before
     public void setUp() {
-        // Настройка Selenide для использования ChromeDriver версии 128
+        //Настройка Selenide для использования ChromeDriver версии 128
         Configuration.browser = "chrome";
         Configuration.browserVersion = "128.0";
-        Configuration.driverManagerEnabled = false; // Отключаем автоматическую загрузку драйвера*/
+        Configuration.driverManagerEnabled = false; // Отключаем автоматическую загрузку драйвера
     }
 
     @Test
