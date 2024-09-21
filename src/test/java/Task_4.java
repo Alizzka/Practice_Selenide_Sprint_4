@@ -8,6 +8,7 @@
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import com.codeborne.selenide.Configuration;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,7 +38,9 @@ public class Task_4 {
 
         // Выведи текст второй карточки в консоль (для проверки)
         System.out.println("Текст второй карточки: " + cardText);
-
-
+    }
+    @After
+    public void tearDown() {
+        closeWebDriver(); // Закрытие браузера после каждого теста
     }
 }
